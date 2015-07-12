@@ -7,5 +7,5 @@ gem 'grape'
 gem 'dalli'
 gem 'grape-entity'
 gem 'grape-swagger'
-gem 'garner'
+# gem 'garner', path: '/Users/damian/workspace/comercial/gems/garner-master'
 
