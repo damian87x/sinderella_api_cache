@@ -1,7 +1,6 @@
-require "sinderella_api_cache/version"
 require 'pry'
-require 'garner/mixins/rack'
-
-module SinderellaApiCache
-
-end
+# Garner core
+require 'sinderella_api_cache/version'
+require 'sinderella_api_cache/config'
+# External require
+require 'garner'

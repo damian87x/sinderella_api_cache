@@ -5,6 +5,7 @@ gemspec
 
 gem 'grape'
 gem 'dalli'
+gem 'garner'
 gem 'grape-entity'
 gem 'grape-swagger'
 # gem 'garner', path: '/Users/damian/workspace/comercial/gems/garner-master'

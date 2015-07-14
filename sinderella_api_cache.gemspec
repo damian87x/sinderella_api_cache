@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_runtime_dependency 'dalli'
-  # spec.add_runtime_dependency 'garner', '0.5.1'
   spec.add_runtime_dependency 'grape', '0.6.1'
   spec.add_runtime_dependency 'grape-entity','0.4.0'
   spec.add_runtime_dependency 'grape-swagger','0.8.0'
+  spec.add_runtime_dependency 'garner','0.5.1'
 end
