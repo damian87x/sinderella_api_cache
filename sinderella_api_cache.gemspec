@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  # Memcached has 1 mb limits can be easy changed  up to 129mb in /etc/memcached.conf add -I 128M
   spec.add_runtime_dependency 'dalli'
   spec.add_runtime_dependency 'grape', '0.6.1'
   spec.add_runtime_dependency 'grape-entity','0.4.0'
