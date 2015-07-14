@@ -3,10 +3,11 @@ module SinderellaApiCache
 
   class KeyConstructor
 
-    def initialize(endpoint, class_name)
+    def initialize(endpoint, class_name, is_count = false)
       @params_grape = endpoint.params
       @route_info = @params_grape.route_info
       @target = class_name
+      @is_count = is_count
       prepare
     end
 
@@ -43,14 +44,21 @@ module SinderellaApiCache
       give_access unless has_access?
       case decide
         when :child_strategy
-          target = @target.where(correct_params).first
-          if child_target(target)
-            default_key + [@child_target.count]
-          end
+          return with_count_update if @is_count
+          default_key
         when :single
           default_key
         when :many
           default_key
+        when :unknown
+          default_key
+      end
+    end
+
+    def with_count_update
+      target = @target.where(correct_params).first
+      if child_target(target)
+        default_key + [@child_target.count]
       end
     end
 
@@ -86,7 +94,8 @@ module SinderellaApiCache
     def decide
       return :many if path.to_parts.size == 3
       return :child_strategy if path.to_parts[-2].include?(':')
-      :single if keys.size >= 2 && path.to_parts.last.is_special_key?
+      return :single if keys.size >= 2 && path.to_parts.last.is_special_key?
+      return :unknown
     end
 
 
